@@ -1,0 +1,335 @@
+*, html, body {
+	margin: 0px;
+	padding: 0px;
+}
+
+body { 
+	font-family: "Strait", "lucida grande",tahoma,verdana,arial,sans-serif;
+	font-size: 13px;
+	background: url(../images/fabric_of_squares_gray.png) repeat top left;
+}
+
+a, a:visited{
+	outline: none;
+	color: #000;
+}
+
+button {
+	padding: 3px;
+}
+
+button#login {
+	font-size: 3em;
+	padding: 40px;
+	margin: 0px auto;
+	font-family: "Strait";
+}
+
+.wrap {
+	width: 820px;
+	margin: 0 auto;
+}
+
+#top_bar {
+    border-bottom: 0px;
+    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.52);
+    -moz-box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.52);
+    height: 37px;
+    position: relative;	
+	background: #EEE;
+}
+
+#fb_image {
+	padding: 3px 0px 0px 3px;
+	width: 32px;
+	height: 32px;
+	float: left;
+	display: block;
+}
+
+#fb_name {
+	float: left;
+	display: block;
+	font-size: 16px;
+	color: #000;
+	padding: 8px 0px 0px 10px;
+	line-height: 21px;
+}
+
+#videos {
+	width: 365px;
+	float: left;
+	/* border: 1px solid #999; */
+	/* padding: 10px 0px; */
+	overflow-y: auto;
+	height: 354px;
+	box-shadow: 0 4px 13px -2px rgba(0, 0, 0, 0.52);
+    -moz-box-shadow: 0 4px 13px -2px rgba(0, 0, 0, 0.52);
+	background: #FFF;
+}
+#video_player {
+	width: 425px;
+	float: right;
+}
+#videos a {
+	font-weight: normal;
+	text-decoration: none;
+	color: #000;
+	padding-left: 24px;
+	display: block;
+	line-height: 18px;
+}
+#videos a:hover {
+	color: #666;
+}
+
+#videos p {
+	padding: 2px 5px;
+	border-bottom: 1px solid #EEE;
+}
+
+#videos p:hover .delete_ico {
+	display: block;
+}
+
+#videos p.playing {
+	border-bottom: 1px solid #999;
+	background: #5288C0;
+	color: #FFF;
+}
+
+#videos p.playing a {
+	color: #FFF;
+	/*font-weight: bold;*/
+}
+
+.clear {
+	clear: both;
+	visibility: hidden;
+	width: 1px;
+	height: 1px;
+}
+.loading {
+	background: url('../images/ajax-loader.gif?v=2') no-repeat top left;
+	width: 32px;
+	height: 32px;
+	position: absolute;
+	margin-left: -40px;
+	top: 3px;
+}
+
+.sprite_button {
+	background: url('../images/icons_sprite.png?v=2') no-repeat top left;
+	width: 32px;
+	height: 32px;
+	border: 0px none;
+	cursor: pointer;
+}
+
+.plus {
+	background-position: top left;
+}
+
+.next {
+	background-position: left -43px;
+}
+
+.help {
+	background-position: left -84px;
+}
+
+.info {
+	background-position: left -126px;
+}
+
+.right {
+	background-position: left -168px;
+}
+
+.left {
+	background-position: left -210px;
+}
+
+.shuffle {
+	background-position: left -253px;
+}
+
+.prev {
+	background-position: left -294px;
+}
+
+.control_buttons {
+	padding: 5px;
+	text-align: center;
+}
+
+.control_buttons button {
+	margin-right: 5px;
+}
+
+#friends_list {
+	margin-top: 20px;
+}
+
+#fl_search_input {
+	height: 14px;
+	font-size: 11px;
+	padding: 6px;
+	box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.82);
+    -moz-box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.82);
+	margin-bottom: 2px;
+	width: 193px;
+	border: 0;
+	border-radius: 2px; 
+}
+
+#friends_list2 {
+	height: 200px;
+	overflow-y: auto;
+	clear: both;
+	margin-bottom: 50px;
+}
+
+#friends_list2 a img {
+	width: 40px;
+	height: 40px;
+}
+
+#fb_like {
+	position: absolute;
+	margin: 10px 0px 0px 280px;
+	height: 24px;
+}
+
+#like_overlay {
+    background: url("../images/overlay_back.png") repeat scroll left top transparent;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+    display: none;
+}
+
+#self_like, #bulk {
+    margin: 10px 0;
+}
+
+#like_overlay > #self_like {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #444444;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 0 20px #333333;
+    left: 50%;
+    margin-left: -125px;
+    padding: 20px;
+    position: absolute;
+    top: 25%;
+    width: 250px;
+}
+
+#self_like > span {
+    display: block;
+    margin: 0 auto;
+}
+
+#show_hide_friends {
+	position: absolute;
+	right: 20px;
+	top: 3px;
+}
+
+#invite_friends {
+	font-family: "Strait";
+	font-size: 19px;
+	line-height: 40px;
+	padding: 0px 10px;
+	margin-bottom: 10px;
+	border-radius: 4px;
+	border: 0;
+	box-shadow: 2px 2px 9px #666;
+    -moz-box-shadow: 2px 2px 9px #666;
+	float: right; 
+	cursor: pointer;
+}
+
+.jspTrack {
+	background: transparent;
+}
+
+.jspVerticalBar {
+	width: 9px;
+	background: transparent;
+}
+
+.jspHorizontalBar {
+	height: 9px;
+	background: transparent;
+}
+
+#videos .jspVerticalBar {
+	margin-right: 3px;
+}
+
+.jspDrag {
+	border-radius: 7px;
+	background: #999;
+}
+
+.delete_ico {
+	background: url('../images/1363660023_cancel.png')  no-repeat top left;
+	width: 16px;
+	height: 16px;
+	position: absolute;
+	display: none;
+	cursor: pointer;
+}
+
+#copyright {
+	font-size: 11px;
+	color: #000;
+	text-shadow: none;
+	font-weight: normal;
+}
+
+h1 {
+    color: #FFFFFF;
+    font-size: 60px;
+    font-weight: bold;
+    margin: 10px 0;
+    text-align: center;
+    text-shadow: 0 0 7px #AAA;
+}
+
+#video_search {
+    position: absolute;
+    height: 14px;
+    font-size: 11px;
+    padding: 6px;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.82);
+    -moz-box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.82);
+    -webkit-box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.82);
+    width: 143px;
+    border: 0;
+    border-radius: 2px;
+    margin: -32px 0 0 210px;
+}
+
+#loading_videos {
+    display: none;
+    width: 365px;
+    height: 177px;
+    position: absolute;
+    background: url('../images/overlay_back.png') repeat top left;
+    color: #000;
+    font-size: 49px;
+    text-align: center;
+    padding-top: 177px;
+}
+
+#paypal_donate {
+    margin: 140px 0 0 100px;
+    position: absolute;
+    text-align: center;
+}
