@@ -88,7 +88,7 @@
 <div id="smp-root"></div>
 <div id="fb-root"></div>
 <script>
-	var FB_USER_ID = <?=(isset($_REQUEST['fb_user_id'])?json_encode($_REQUEST['fb_user_id']):0)?>;
+	var FB_USER_ID = <?=(isset($_REQUEST['fb_user_id'])?json_encode($_REQUEST['fb_user_id'], JSON_HEX_QUOT|JSON_HEX_TAG|JSON_HEX_AMP|JSON_HEX_APOS):0)?>;
 	var FB_USERNAME = "";
 	var LIMIT = 10000;
 	var RANDOM = false;
