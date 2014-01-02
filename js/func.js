@@ -434,16 +434,30 @@ var panes = new Array();
 			//$('#fl_search_input').val('Search');
 			for (var i in response.data) {
 				FRIENDS.push(response.data[i].id);
-				var a = $('<a></a>')
-					.html('<img src="https://graph.facebook.com/'+response.data[i].id+'/picture" alt="'+response.data[i].name+'"/>')
-					.attr('href', '?fb_user_id='+response.data[i].id)
-					.attr('title', response.data[i].name);
-				pane.append(a);
-			}
-			panes[0].reinitialise();
-			if (typeof(callback) != "undefined") {
-				callback();
-			}
+
+            }
+            $.post(
+                'ajax.php?action=get_friends',
+                {
+                    friends: FRIENDS.join(','),
+                    fb_user_id: SELF_ID
+                },
+                function (json) {
+                    if (json['result']== 'ok') {
+                        for (var i in json['visible_friends']) {
+                            var a = $('<a></a>')
+                                .html('<img src="https://graph.facebook.com/'+response.data[i].id+'/picture" alt="'+response.data[i].name+'"/>')
+                                .attr('href', '?fb_user_id='+response.data[i].id)
+                                .attr('title', response.data[i].name);
+                            pane.append(a);
+                        }
+                    }
+                    panes[0].reinitialise();
+                    if (typeof(callback) != "undefined") {
+                        callback();
+                    }
+                }
+            );
 		});
 	}
 

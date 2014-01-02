@@ -62,6 +62,21 @@
 					echo 'nok';
 				}
 			break;
+
+            case 'get_friends':
+                if (isset($_REQUEST['fb_user_id'])&& isset($_REQUEST['friends'])) {
+                    $fb_user_id = $_REQUEST['fb_user_id'];
+                    $res =$sql->db_Select('user_data', 'DISTINCT user_id as `user_id`');
+                    $friends = array();
+                    while ($r = $sql->db_Fetch()) {
+                        $friends[] = $r['user_id'];
+                    }
+                    header('Content-type: application/json');
+                    echo json_encode(array('result'=>'ok', 'visible_friends'=>array_intersect(explode(',', $_REQUEST['friends']), $friends)));
+                } else {
+                    echo 'nok';
+                }
+                break;
 		}
 	}
 	
