@@ -202,7 +202,7 @@ var panes = new Array();
 		var res = [];
 		for (var i in data_small) {
 			var val = data_small[i];
-			if ( ((val.type == 'video') || (val.type == 'swf') || (val.type == 'link')) && (val.source) && (val.source.indexOf('youtube.com')!=-1)) {
+			if ( ((val.type == 'video') || (val.type == 'swf') || (val.type == 'link')) && (val.source) && ((val.source.indexOf('youtube.com')!=-1) || (val.source.indexOf('youtu.be')!=-1))) {
 				var video_id = getVideoId(val.link);
 				if (!dataExists(video_id, data_big)) {
 					res.push(val);
@@ -227,7 +227,7 @@ var panes = new Array();
 		}
 		var to_write = [];
 		$.each (response.data, function (i, val) {
-			if (((val.type == 'swf') || (val.type == 'video') || (val.type == 'link')) && (val.link) && (val.link.indexOf('youtube.com')!=-1)) {
+			if (((val.type == 'swf') || (val.type == 'video') || (val.type == 'link')) && (val.link) && ((val.link.indexOf('youtube.com')!=-1)  || (val.link.indexOf('youtu.be')!=-1))) {
 				videos.push({video_id: getVideoId(val.link), link: val.link, name: val.name, created_time: val.created_time});
 				to_write.push({video_id: getVideoId(val.link), link: val.link, name: val.name, created_time: val.created_time});
 			}
@@ -265,7 +265,7 @@ var panes = new Array();
 	}
 	
 	function getVideoId(link) {
-		if ((link.indexOf('youtu.be')>-1) && (link.indexOf('v=')==0)) {
+		if ((link.indexOf('youtu.be')>-1) && (link.indexOf('v=')<=0)) {
 			var youtube_id = link.split('youtu.be/')[1];
 		} else if (link.indexOf('attribution_link')>-1) {
 			var youtube_id = link.split('watch%3Fv%3D')[1];
