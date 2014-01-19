@@ -1,6 +1,7 @@
 var videos = [];
 var def_videos = [];
 var inc = 0;
+var played = [];
 
 
 
@@ -114,25 +115,49 @@ var panes = new Array();
 		
 		$('button.next').unbind('click').click ( function (e) {
 			e.preventDefault();
-			var off = RANDOM?Math.floor(Math.random()*videos.length):1;
+            if (RANDOM) {
+                var rand = Math.floor(Math.random()*videos.length);
+                while (inArray(videos[rand].video_id, played)) {
+                    rand = Math.floor(Math.random()*videos.length);
+                }
+                setPlayed(videos[rand].video_id);
+                play(videos[rand].video_id);
+                selectVideoLink(rand);
+            } else {
+                playPrevNext(1);
+            }
 			StarSMP.track("select.next", document.location.href);
-			playPrevNext(off);
+
 		});
 		
 		$('button.prev').unbind('click').click ( function (e) {
 			e.preventDefault();
-			var off = RANDOM?Math.floor(Math.random()*videos.length):-1;
+            if (RANDOM) {
+                var rand = Math.floor(Math.random()*videos.length);
+                while (inArray(videos[rand].video_id, played)) {
+                    rand = Math.floor(Math.random()*videos.length);
+                }
+                setPlayed(videos[rand].video_id);
+                play(videos[rand].video_id);
+                selectVideoLink(rand);
+            } else {
+                playPrevNext(-1);
+            }
 			StarSMP.track("select.prev", document.location.href);
-			playPrevNext(off);
 			return false;
 		});
 		
 		$('button.shuffle').unbind('click').click ( function (e) {
 			e.preventDefault();
-			var rand = Math.floor(Math.random()*videos.length);
+            var rand = Math.floor(Math.random()*videos.length);
+            while (inArray(videos[rand].video_id, played)) {
+                rand = Math.floor(Math.random()*videos.length);
+            }
+            setPlayed(videos[rand].video_id);
+            play(videos[rand].video_id);
+            selectVideoLink(rand);
 			StarSMP.track("select.shuffle", document.location.href);
-			playPrevNext(rand);
-			return false;
+            return false;
 		});
 		
 		$('#do_random').unbind('change').change( function (e) {
@@ -157,7 +182,13 @@ var panes = new Array();
 		});
 		
 	});
-	
+
+    function setPlayed(video_id) {
+        played.push(video_id);
+        if (played.length == videos.length) {
+            played = [];
+        }
+    }
 	
 	function loadVideos(callback) {
 		showLoading();
@@ -416,8 +447,13 @@ var panes = new Array();
 	    // console.log("Player's new state: " + newState);
 		if (newState == 0) {
 			if (RANDOM) {
-            var rand = Math.floor(Math.random()*videos.length);
-			playPrevNext(rand);
+                var rand = Math.floor(Math.random()*videos.length);
+                while (inArray(videos[rand].video_id, played)) {
+                    rand = Math.floor(Math.random()*videos.length);
+                }
+                setPlayed(videos[rand].video_id);
+                play(videos[rand].video_id);
+                selectVideoLink(rand);
             } else {
                 playNext();
             }

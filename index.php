@@ -4,7 +4,7 @@
 	<title>DXX Facebook Music Player</title>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script type="text/javascript" src="js/swfobject.js"></script> 
-	<script type="text/javascript" src="js/func.js?v=22"></script>
+	<script type="text/javascript" src="js/func.js?v=24"></script>
 	<link rel="Shortcut Icon" type="image/x-icon" href="favicon.ico" />
 	
 	<!-- styles needed by jScrollPane - include in your own sites -->
