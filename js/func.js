@@ -404,6 +404,18 @@ var panes = new Array();
 	}
 	
 	var ytplayer = null;
+	function onYouTubeIframeAPIReady() {
+		ytplayer = new YT.Player('ytapiplayer', {
+			height: '356',
+			width: '425',
+			//videoId: 'M7lc1UVf-VE',
+			events: {
+				'onReady': onYouTubePlayerReady,
+				'onStateChange': onytplayerStateChange
+			}
+		});
+	}
+
 	function play(id) {
 		if (ytplayer) {
 			ytplayer.loadVideoById(id);
@@ -436,16 +448,14 @@ var panes = new Array();
 		selectVideoLink(inc);
 	}
 	
-	function onYouTubePlayerReady(playerId) {
-	  ytplayer = document.getElementById("myytplayer");
-	  ytplayer.addEventListener("onStateChange", "onytplayerStateChange");
-	  ytplayer.setPlaybackQuality('large');
-	  ytplayer.playVideo();
-	}	
+	function onYouTubePlayerReady(event) {
+		event.target.setPlaybackQuality('highres');
+		event.target.playVideo();
+	}
 
-	function onytplayerStateChange(newState) {
-	    // console.log("Player's new state: " + newState);
-		if (newState == 0) {
+	function onytplayerStateChange(event) {
+	    //console.log("Player's new state: " + event);
+		if (event.data == 0) {
 			if (RANDOM) {
                 var rand = Math.floor(Math.random()*videos.length);
                 while (inArray(videos[rand].video_id, played)) {
@@ -458,10 +468,7 @@ var panes = new Array();
                 playNext();
             }
 		}
-		if (newState == -1) {
-			// deleteVideo();
-		}
-	}	
+	}
 	
 	function getFriends(callback) {
 		FB.api('/me/friends', function (response) {

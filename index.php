@@ -3,8 +3,8 @@
 <head>
 	<title>DXX Facebook Music Player</title>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-	<script type="text/javascript" src="js/swfobject.js"></script> 
-	<script type="text/javascript" src="js/func.js?v=24"></script>
+	<!-- script type="text/javascript" src="js/swfobject.js"></script -->
+	<script type="text/javascript" src="js/func.js?v=30"></script>
 	<link rel="Shortcut Icon" type="image/x-icon" href="favicon.ico" />
 	
 	<!-- styles needed by jScrollPane - include in your own sites -->
@@ -68,6 +68,13 @@
 			</div>
 			<span style="font-size: 49px;">Select video to play</span>
 		</div>
+		<script>
+			var tag = document.createElement('script');
+
+			tag.src = "https://www.youtube.com/iframe_api";
+			var firstScriptTag = document.getElementsByTagName('script')[0];
+			firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+		</script>
 		<div class="control_buttons" style="display: none;">
 			<button class="sprite_button prev" title="previous">&nbsp;</button>
 			<button class="sprite_button next" title="next">&nbsp;</button>
@@ -107,7 +114,7 @@
             loyaltyId:   '127517',
             apiServer:   '//api.starsmp.com/api/',
             clientId:    'music_player',
-            channelUrl:  'https://www.s-mail.cz/dxx_player/channel.html.php'
+            channelUrl:  'https://extensions.mageguru.net/dxx_player/channel.html.php'
         }, function(data) {
             StarSMP.track("view", document.location.href);
         });
@@ -116,7 +123,7 @@
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '311789798881087', // App ID
-	  channelUrl : 'https://www.s-mail.cz/dxx_player/channel.html.php', // Channel File for x-domain communication
+	  channelUrl : 'https://extensions.mageguru.net/dxx_player/channel.html.php', // Channel File for x-domain communication
       status     : true, // check login status
       cookie     : true, // enable cookies to allow the server to access the session
       xfbml      : true  // parse XFBML
